@@ -2,9 +2,11 @@
   "name": "reidmv-task_series",
   "version": "0.1.0",
   "author": "Reid Vandewiele",
-  "summary": "",
+  "summary": "Utility plan to intelligently run a series of tasks and report back on the outcome.",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/reidmv/reidmv-task_series.git",
+  "project_page": "https://github.com/reidmv/reidmv-task_series",
+  "issues_url": "https://github.com/reidmv/reidmv-task_series/issues",
   "dependencies": [
 
   ],
