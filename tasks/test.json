@@ -1,0 +1,12 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A test task. Exits with the specified exit code, 0 or 1",
+  "input_method": "environment",
+  "parameters": {
+    "exit_code": {
+      "description": "The exit code the test task should use",
+      "type": "Integer[0,1]"
+     }
+  }
+}
