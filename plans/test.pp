@@ -1,9 +1,9 @@
 plan task_series::test (
-  TargetSpec $nodes = ['local://1', 'local://2', 'local://3'],
+  TargetSpec $nodes = ['ssh://foo', 'local://1', 'local://2', 'local://3'],
 ) {
   $targets = get_targets($nodes)
 
-  $series = run_plan('task_series',
+  $series_result = run_plan('task_series',
     nodes => $targets,
     tasks => [
       [ 'task_series::test',
@@ -18,5 +18,5 @@ plan task_series::test (
     ],
   )
 
-  return($series)
+  return($series_result[summary])
 }

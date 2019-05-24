@@ -50,7 +50,7 @@ plan task_series (
     _catch_errors => true,
   )
 
-  $results = $tasks.reduce([$connection_results]) |$results_array, $task| {
+  $result_sets = $tasks.reduce([$connection_results]) |$results_array, $task| {
     $task_array = Array($task)
     notice($task_array)
     $results_array << run_task($task_array[0], $results_array[-1].ok_set.targets,
@@ -58,8 +58,14 @@ plan task_series (
     )
   }
 
+  $indexed_labeled_results = [
+    [0, 'validate connection', $result_sets[0]]
+  ] + $result_sets[1,-1].map |$index, $result| {
+    [$index + 1, $tasks[$index][0], $result]
+  }
+
   return({
-    'results' => $results,
-    'summary' => task_series::summarize($results),
+    'result_sets' => $result_sets,
+    'summary' => task_series::summarize($indexed_labeled_results),
   })
 }
